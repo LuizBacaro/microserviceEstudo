@@ -1,0 +1,12 @@
+package com.itau.fornecedor;
+
+public class Snippet {
+	@Autowired
+		private InfoService infoService;
+	
+		@RequestMapping("/{estado}")
+		public InfoFornecedor getInfoPorEstado(@PathVariable String estado) {
+			return infoService.getInfoPorEstado(estado);
+		}
+}
+

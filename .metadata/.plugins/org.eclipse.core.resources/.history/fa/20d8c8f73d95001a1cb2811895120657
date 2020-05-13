@@ -1,0 +1,19 @@
+package com.itau.loja.controller.dto;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Snippet {
+	@Autowired
+		private RestTemplate client;
+	
+		public void realizaCompra(CompraDTO compra) {
+			
+			ResponseEntity<InfoFornecedorDTO> exchange = 
+				client.exchange("http://fornecedor/info/"+compra.getEndereco().getEstado(),
+				HttpMethod.GET, null, InfoFornecedorDTO.class);
+			
+			System.out.println(exchange.getBody().getEndereco());
+			
+		}
+}
+
